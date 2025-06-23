@@ -26,7 +26,7 @@
             <div class="desc">
               <div class="desc-wrapper">
                 <div class="name">这里是主播设置的名字啊</div>
-                <div class="count"><hot-icon /> 2.5W</div>
+                <div class="count"><svg-icon name="hot-icon" /> 2.5W</div>
               </div>
               <div class="follow-btn">+</div>
             </div>
@@ -38,7 +38,7 @@
             <img src="@/assets/images/host-avatar.png" alt="" class="round" />
             <img src="@/assets/images/host-avatar.png" alt="" class="round" />
             <div class="count-number">107</div>
-            <close-icon @click="$router.go(-1)" />
+            <svg-icon name="close-icon" size="24" @click="$router.go(-1)" />
           </div>
         </div>
       </div>
@@ -66,13 +66,18 @@
           <div class="options">
             <div class="input">
               <input placeholder="来说一句吧..." />
-              <face-icon class="face-icon" />
+              <svg-icon name="smiley-face-icon" size="24" />
             </div>
 
             <div class="options-action">
-              <share-icon style="margin-right: 8px" />
-              <gift-icon style="margin-right: 8px" @click="isShowGiftModal = true" />
-              <bar-icon />
+              <svg-icon name="share-icon" size="40" style="margin-right: 8px" />
+              <svg-icon
+                name="gift-icon"
+                size="40"
+                style="margin-right: 8px"
+                @click="isShowGiftModal = true"
+              />
+              <svg-icon name="bar-icon" size="40" />
             </div>
           </div>
         </div>
@@ -86,21 +91,12 @@
 <script setup>
 import { sleep } from '@/utils'
 import GiftModal from '@/components/gift-modal'
-import Gift from './components/gift'
-import JoinedLive from './components/joined-live'
-import Barrage from './components/barrage'
-import CloseIcon from '@/assets/svg/close-icon'
-import HotIcon from '@/assets/svg/hot-icon'
-import GiftIcon from '@/assets/svg/gift-icon'
-import FaceIcon from '@/assets/svg/smiley-face-icon'
-import ShareIcon from '@/assets/svg/share-icon'
-import BarIcon from '@/assets/svg/bar-icon'
+import GiftComp from './components/gift'
+import JoinedLiveComp from './components/joined-live'
+import BarrageComp from './components/barrage'
 import LoveIcon from '@/assets/images/love.webp'
 import UserAvatar from '@/assets/images/avatar.png'
 
-const timer1 = ref(-1)
-const timer2 = ref(-1)
-const timer3 = ref(-1)
 const page = ref(null)
 const videoEl = ref(null)
 const topEl = ref(null)
@@ -116,25 +112,7 @@ const activeBarrages = []
 onMounted(() => {
   runUserJoinLive()
   runSendComment()
-  // timer1.value = setInterval(async () => {
-  //   sendGift()
-  //   await sleep(300)
-  //   sendGift()
-  //   joinLive()
-  // }, 1000)
-  // timer2.value = setInterval(async () => {
-  //   sendBarrage()
-  // }, 1500)
-  // timer3.value = setInterval(async () => {
-  //   sendComment()
-  // }, 700)
   videoEl.value.play()
-})
-
-onUnmounted(() => {
-  clearInterval(timer1.value)
-  clearInterval(timer2.value)
-  clearInterval(timer3.value)
 })
 
 function handleSelectGift(item) {
@@ -212,26 +190,9 @@ function sendGift({
   sender = '用户A',
   receiver = '主播B',
   avatar = UserAvatar,
-  giftIcon = GiftIcon,
+  giftIcon = LoveIcon,
   count = 1,
 } = {}) {
-  // let page = new Dom(this.page)
-  // let sendGift = new Dom().create(this.sendGiftTemplate())
-  // sendGift.on('animationend', () => {
-  //   sendGift.remove()
-  // })
-  // let oldSendGift = new Dom('.send-gift')
-  // let top = document.body.clientHeight * 0.6
-  // if (oldSendGift.els.length !== 0) {
-  //   top = sendGift.removePx(oldSendGift.css('top')) - 70
-  // }
-  // if (top < 100) {
-  //   top = document.body.clientHeight * 0.6
-  // }
-  // console.log('top', top)
-  // sendGift.css('top', top)
-  // page.append(sendGift)
-
   const container = document.createElement('div')
   document.body.appendChild(container)
   // const baseTop = window.innerHeight  * 0.6
@@ -248,7 +209,7 @@ function sendGift({
 
   const app = createApp({
     render() {
-      return h(Gift, {
+      return h(GiftComp, {
         sender,
         receiver,
         avatar,
@@ -274,7 +235,7 @@ function joinLive(name = '用户昵称', level = 30) {
   const pageEl = page.value
   const app = createApp({
     render() {
-      return h(JoinedLive, {
+      return h(JoinedLiveComp, {
         name,
         level,
         icon: LoveIcon,
@@ -301,22 +262,6 @@ async function sendComment({ name, text }) {
 
 // 发送弹幕
 function sendBarrage({ name = 'name11', text = '随便一段话' } = {}) {
-  // let page = new Dom(this.page)
-  // let barrage = new Dom().create(this.barrageTemplate())
-  // barrage.on('animationend', () => {
-  //   barrage.remove()
-  // })
-  // let oldBarrages = new Dom('.barrage')
-  // let top = document.body.clientHeight * 0.35
-  // if (oldBarrages.els.length !== 0) {
-  //   top = barrage.removePx(oldBarrages.css('top')) + 20
-  // }
-  // if (top > document.body.clientHeight * 0.5) {
-  //   top = document.body.clientHeight * 0.35
-  // }
-  // barrage.css('top', top)
-  // page.append(barrage)
-
   const container = document.createElement('div')
   document.body.appendChild(container)
 
@@ -335,7 +280,7 @@ function sendBarrage({ name = 'name11', text = '随便一段话' } = {}) {
 
   const app = createApp({
     render() {
-      return h(Barrage, {
+      return h(BarrageComp, {
         name,
         text,
         top,

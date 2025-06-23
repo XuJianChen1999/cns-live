@@ -2,12 +2,12 @@
  * @Author: Xujianchen
  * @Date: 2025-06-18 10:23:44
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 15:08:38
+ * @LastEditTime: 2025-06-23 15:50:43
  * @Description: 直播间
 -->
 <template>
   <div class="live">
-    <video
+    <!-- <video
       src="https://www.douyin.com/aweme/v1/play/?video_id=v0d00fg10000cj1lq4jc77u0ng6s1gt0&line=0&file_id=bed51c00899b458cbc5d8280147c22a1&sign=7749aec7bd62a3760065f60e40fc1867&is_play_url=1&source=PackSourceEnum_PUBLISH"
       class="live-video"
       poster="https://dy.ttentau.top/images/jwWCPZVTIA4IKM-8WipLF.png"
@@ -22,15 +22,14 @@
       fullscreen="false"
       autoplay=""
     >
-      <!-- <p>您的浏览器不支持 video 标签。</p> -->
-    </video>
+      </video> -->
     <div class="live-header">
       <div class="live-header-host">
         <img src="@/assets/images/host-avatar.png" />
         <div class="live-header-host-info">
           <div class="live-header-host-name">西伯利亚</div>
           <div class="live-header-host-hot">
-            <hot-icon />
+            <!-- <hot-icon /> -->
             <span>2.5W</span>
           </div>
         </div>
@@ -46,7 +45,6 @@
         <close-icon />
       </div>
     </div>
-
     <div class="live-bottom">
       <div class="live-bottom-barrage"></div>
       <div class="live-bottom-action">
@@ -65,7 +63,7 @@
 </template>
 
 <script setup>
-import HotIcon from '@/assets/svg/hot-icon'
+// import HotIcon from '@/assets/svg/hot-icon'
 import CloseIcon from '@/assets/svg/close-icon'
 import ShareIcon from '@/assets/svg/share-icon'
 import GiftIcon from '@/assets/svg/gift-icon'

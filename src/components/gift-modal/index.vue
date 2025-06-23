@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 15:11:06
+ * @LastEditTime: 2025-06-23 15:49:55
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -96,7 +96,7 @@
       <!-- 底部操作部分 -->
       <div class="gift-bottom flex-center">
         <div class="gift-bottom-left flex-center">
-          <gift-diamond />
+          <svg-icon name="gift-diamond" />
           <span>100</span>
           <div class="gift-bottom-btn flex-center red">充值<span></span></div>
           <div class="gift-bottom-btn flex-center yellow">兑换<span></span></div>
@@ -111,7 +111,6 @@
 import { showToast } from 'vant'
 import { isEmptyObject } from '@/utils'
 import Popup from '@/components/dialog/from-bottom'
-import GiftDiamond from '@/assets/svg/gift-diamond'
 import chunkArray from './gifts'
 
 const modelValue = defineModel({ type: Boolean, default: false })

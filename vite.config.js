@@ -1,6 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import { VantResolver } from '@vant/auto-import-resolver'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -12,6 +14,11 @@ export default defineConfig({
     AutoImport({ imports: ['vue', 'vue-router'] }),
     Components({
       resolvers: [VantResolver()],
+    }),
+    createSvgIconsPlugin({
+      // eslint-disable-next-line no-undef
+      iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
+      symbolId: 'svg-icon-[dir]-[name]',
     }),
   ],
   resolve: {

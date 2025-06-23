@@ -1,0 +1,367 @@
+.LivePage {
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  color: white;
+  font-size: 14px;
+  position: relative;
+}
+
+.LivePage .live-wrapper {
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LivePage .live-wrapper video {
+  width: 100%;
+  object-fit: cover;
+}
+
+.LivePage .live-wrapper img {
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  color: #e5e5e5;
+}
+
+.LivePage .float {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.LivePage .float .top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.LivePage .float .top .left {
+  margin-left: 10px;
+}
+
+.LivePage .float .top .left .liver {
+  box-sizing: border-box;
+  background: #0000004d;
+  display: flex;
+  padding: 3.5px 4px;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.LivePage .float .top .left .liver .avatar {
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  margin-right: 7.6px;
+}
+
+.LivePage .float .top .left .liver .desc {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LivePage .float .top .left .liver .desc .desc-wrapper {
+  width: 80px;
+}
+
+.LivePage .float .top .left .liver .desc .desc-wrapper .name {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.LivePage .float .top .left .liver .desc .desc-wrapper .count {
+  display: flex;
+  align-items: center;
+  color: gainsboro;
+  font-size: 10px;
+}
+
+.LivePage .float .top .left .liver .desc .follow-btn {
+  height: 24px;
+  width: 33px;
+  line-height: 22px;
+  background: linear-gradient(270deg, #ff5c87ff 0%, #ff6a32ff 100%);
+  border-radius: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.LivePage .float .top .left .left-bottom {
+  margin-top: 8px;
+  display: flex;
+  font-size: 12px;
+}
+
+.LivePage .float .top .left .left-bottom .tag {
+  display: flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: rgba(58, 58, 70, 0.3);
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.LivePage .float .top .left .left-bottom .tag img {
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+}
+
+.LivePage .float .top .right {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.LivePage .float .top .right .follower {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.LivePage .float .top .right .follower .round {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.LivePage .float .top .right .follower .count-number {
+  padding: 6px 8px;
+  font-size: 12px;
+  background: #0000004d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-right: 4px;
+}
+
+.LivePage .float .top .right .follower .close {
+  margin-right: 10px;
+  margin-left: 6px;
+  padding: 6px;
+  width: calc(33px - 12px);
+  height: calc(33px - 12px);
+}
+
+.LivePage .float .top .right .more {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.LivePage .float .top .right .more .wrapper {
+  border-radius: 13px 0 0 13px;
+  padding: 2px 0 2px 10px;
+  margin-top: 15px;
+  background: rgba(58, 58, 70, 0.3);
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+
+.LivePage .float .bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  padding-bottom: calc(constant(safe-area-inset-bottom) + 16px);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  display: flex;
+}
+
+.LivePage .float .bottom .left {
+  width: 100%;
+}
+
+.LivePage .float .bottom .left .comments {
+  margin-bottom: 10px;
+  overflow: auto;
+  width: 78%;
+  height: 200px;
+  mask-image: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 15%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%);
+}
+
+.LivePage .float .bottom .left .comments .comments-wrapper {
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.LivePage .float .bottom .left .comments .comment {
+  width: 222px;
+  padding: 8px;
+  border-radius: 12px;
+  background: #0000004D;
+  margin-bottom: 5px;
+}
+
+.LivePage .float .bottom .left .comments .comment.notice .text {
+  color: #a4eafd;
+}
+
+.LivePage .float .bottom .left .comments .comment .level {
+  display: inline-block;
+}
+
+.LivePage .float .bottom .left .comments .comment .level .wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  border-radius: 10px;
+  margin-right: 5px;
+  padding: 0 6px;
+  background: #8285b9;
+}
+
+.LivePage .float .bottom .left .comments .comment .level .wrapper img {
+  margin-right: 3px;
+  width: 12px;
+}
+
+.LivePage .float .bottom .left .comments .comment .name {
+  margin-right: 5px;
+  font-size: 13px;
+  color: #a4eafd;
+}
+
+.LivePage .float .bottom .left .comments .comment .text {
+  word-break: break-all;
+}
+
+.LivePage .float .bottom .left .comments .comment .notice-tip {
+  color: #FF5C87FF !important;
+}
+
+.LivePage .float .bottom .left .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.LivePage .float .bottom .left .options .input {
+  color: #a2a2a2;
+  font-size: 12px;
+  border-radius: 18.5px;
+  padding: 8px 12px;
+  background: #0000004d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.6);
+  width: 168px;
+}
+
+.LivePage .float .bottom .left .options .input input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.LivePage .float .bottom .left .options .input img {
+  width: 20px;
+}
+
+.LivePage .float .bottom .left .options .more {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  background: rgba(58, 58, 70, 0.3);
+  border-radius: 50%;
+}
+
+.LivePage .float .bottom .left .options .gift {
+  margin-left: 10px;
+  width: 31px;
+}
+
+.LivePage .float .bottom .left .options .options-action {
+  display: flex;
+  align-items: center;
+}
+
+.LivePage .float .bottom .right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.LivePage .float .bottom .right .avatar-wrapper {
+  background: linear-gradient(to bottom, #000000, #fc2f56);
+  border-radius: 20px;
+  width: calc(35px + 2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.LivePage .float .bottom .right .avatar-wrapper.followed {
+  background: linear-gradient(to bottom, rgba(240, 183, 31, 0.2), #f0b71f);
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .avatar {
+  width: 35px;
+  border-radius: 50%;
+  background: white;
+  padding: 1.5px;
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .follow {
+  width: 32px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .options {
+  margin-top: 8px;
+  margin-bottom: 5px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .options img {
+  position: absolute;
+  width: 18px;
+  transition: all 0.8s;
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .options .yes {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .options.attention .no {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.LivePage .float .bottom .right .avatar-wrapper .options.attention .yes {
+  opacity: 1;
+  transform: rotate(0deg);
+}

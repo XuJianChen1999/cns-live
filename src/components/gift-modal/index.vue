@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 16:16:54
+ * @LastEditTime: 2025-06-23 17:22:27
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -41,6 +41,7 @@
               <div
                 v-for="(item, index) in chunk"
                 :key="index"
+                :class="{ active: currentIndex === `${chunkIndex}-${index}` }"
                 class="gift-swipe-item flex-center"
                 @click="selectGift(item, chunkIndex, index)"
               >
@@ -124,6 +125,7 @@ const MAX_TOTAL_PARTICLES = 50 // 全局最大粒子数量
 const MAX_PARTICLES_PER_CLICK = 10 // 每次点击最大粒子数
 const RIPPLE_LIFETIME = 600 // 波纹动画持续时间(ms)
 const PARTICLE_LIFETIME = 1000 // 粒子动画持续时间(ms)
+const CLICK_INTERVAL = 300 // 连续点击间隔(ms)
 
 async function selectGift(item, chunkIndex, index) {
   const now = Date.now()
@@ -131,11 +133,12 @@ async function selectGift(item, chunkIndex, index) {
 
   await nextTick()
   // 计算连击
-  if (now - gift.lastClickTime < 500) {
+  if (now - gift.lastClickTime < CLICK_INTERVAL) {
     gift.combo++
     triggerEffects(`${chunkIndex}-${index}`)
   } else {
     gift.combo = 1
+    currentIndex.value = `${chunkIndex}-${index}`
   }
   gift.lastClickTime = now
   if (!gift.animate) {
@@ -145,7 +148,6 @@ async function selectGift(item, chunkIndex, index) {
   // 重置2秒计时器
   clearTimeout(gift.pulseTimer)
   gift.pulseTimer = setTimeout(() => (gift.animate = false), 300)
-  currentIndex.value = `${chunkIndex}-${index}`
   selected.value = gift
 }
 

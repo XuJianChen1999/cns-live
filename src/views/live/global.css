@@ -6,24 +6,29 @@
   align-items: flex-end;
   animation: send-gift-anim 2s linear;
 }
+
 @keyframes send-gift-anim {
   from {
     opacity: 0;
     transform: translateX(-100%);
   }
+
   10% {
     opacity: 1;
     transform: translateX(0);
   }
+
   80% {
     opacity: 1;
     transform: translateX(0);
   }
+
   to {
     opacity: 0;
     transform: translateX(0);
   }
 }
+
 .send-gift .left {
   background: linear-gradient(to right, #fc2f56, rgba(252, 47, 86, 0.2));
   padding: 5px;
@@ -31,6 +36,7 @@
   display: flex;
   align-items: center;
 }
+
 .send-gift .left .avatar {
   margin-right: 5px;
   width: 40px;
@@ -38,33 +44,41 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
 .send-gift .left .desc {
   width: 20vw;
 }
+
 .send-gift .left .desc .name,
 .send-gift .left .desc .sendto {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .send-gift .left .desc .name {
   font-size: 14px;
 }
+
 .send-gift .left .desc .sendto {
   font-size: 12px;
   color: yellow;
 }
+
 .send-gift .left .desc .to {
   color: yellow;
 }
+
 .send-gift .left .gift-icon {
   width: 40px;
 }
+
 .send-gift .right {
   font-size: 23px;
   font-weight: bold;
   font-style: oblique;
 }
+
 .barrage {
   position: fixed;
   top: 50%;
@@ -74,20 +88,24 @@
   font-size: 12px;
   animation: anim 5s linear;
 }
+
 @keyframes anim {
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(-100%);
   }
 }
+
 .barrage .type {
   padding: 1px 6px;
   border: 1px solid white;
   border-radius: 20px;
   margin-right: 5px;
 }
+
 .user-joined {
   font-size: 12px;
   position: absolute;
@@ -99,27 +117,33 @@
   margin-bottom: 5px;
   animation: user-joined-anim 3s linear;
 }
+
 @keyframes user-joined-anim {
   from {
     opacity: 0;
     transform: translateX(100%);
   }
+
   10% {
     opacity: 1;
     transform: translateX(30px);
   }
+
   90% {
     opacity: 1;
     transform: translateX(0);
   }
+
   to {
     opacity: 1;
     transform: translateX(-100%);
   }
 }
+
 .user-joined .level {
   display: inline-block;
 }
+
 .user-joined .level .wrapper {
   display: flex;
   align-items: center;
@@ -127,17 +151,20 @@
   border-radius: 10px;
   margin-right: 5px;
   padding: 0 6px;
-  background: #8285b9;
+  /* background: #8285b9; */
 }
+
 .user-joined .level .wrapper img {
   margin-right: 3px;
   width: 12px;
 }
+
 .user-joined .name {
   margin-right: 5px;
   font-size: 13px;
   color: #a4eafd;
 }
+
 .user-joined .text {
   word-break: break-all;
 }

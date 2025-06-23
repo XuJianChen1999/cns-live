@@ -187,6 +187,9 @@
             border-radius: 12px;
             background: #0000004d;
             margin-bottom: 5px;
+            &:last-child {
+              margin-bottom: 12px;
+            }
             &.notice {
               .text {
                 color: #a4eafd;
@@ -201,10 +204,9 @@
                 border-radius: 10px;
                 margin-right: 5px;
                 padding: 0 6px;
-                background: #8285b9;
-                img {
+                // background: #8285b9;
+                svg {
                   margin-right: 3px;
-                  width: 12px;
                 }
               }
             }

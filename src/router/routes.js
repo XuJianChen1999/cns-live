@@ -1,10 +1,3 @@
-/*
- * @Author: Xujianchen
- * @Date: 2025-06-18 09:59:59
- * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 15:35:00
- * @Description:
- */
 export default [
   {
     path: '/',
@@ -18,6 +11,11 @@ export default [
   {
     path: '/live',
     name: 'live',
-    component: () => import('@/views/live2/index.vue'),
+    component: () => import('@/views/live/index.vue'),
+  },
+  {
+    path: '/live-room',
+    name: 'live-room',
+    component: () => import('@/views/live-room/index.vue'),
   },
 ]

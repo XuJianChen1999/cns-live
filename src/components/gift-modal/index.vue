@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 15:49:55
+ * @LastEditTime: 2025-06-23 16:16:54
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -108,7 +108,7 @@
 </template>
 
 <script setup>
-import { showToast } from 'vant'
+import toast from '@/app/toast'
 import { isEmptyObject } from '@/utils'
 import Popup from '@/components/dialog/from-bottom'
 import chunkArray from './gifts'
@@ -221,7 +221,7 @@ function cleanupExpiredEffects(id) {
 
 function sendGift() {
   if (!currentIndex.value) {
-    return showToast('请选择一个礼物')
+    return toast('请选择一个礼物')
   }
   emits('select', selected.value)
   // close()

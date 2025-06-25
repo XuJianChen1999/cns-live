@@ -19,6 +19,10 @@ const props = defineProps({
     type: [Number, String],
     default: 18,
   },
+  color: {
+    type: String,
+    default: 'inherit',
+  },
   style: Object,
 })
 
@@ -31,6 +35,7 @@ const customStyle = computed(() => {
   return {
     width: `${+p.size}px`,
     height: `${+p.size}px`,
+    color: p.color,
     ...p.style,
   }
 })

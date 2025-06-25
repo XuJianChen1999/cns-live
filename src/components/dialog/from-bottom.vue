@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:52:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 15:07:23
+ * @LastEditTime: 2025-06-25 17:00:11
  * @Description: 底部弹出弹窗
 -->
 <template>
@@ -235,11 +235,11 @@ function close() {
   }
 
   &.light {
-    background: whitesmoke;
+    background: #fff;
   }
 
   &.white {
-    background: white;
+    background: #fff;
   }
 
   &.no-line {

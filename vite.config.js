@@ -1,3 +1,10 @@
+/*
+ * @Author: Xujianchen
+ * @Date: 2025-06-16 15:29:47
+ * @LastEditors: Xujianchen
+ * @LastEditTime: 2025-06-25 16:24:18
+ * @Description:
+ */
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
@@ -28,8 +35,8 @@ export default defineConfig({
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
   server: {
-    https: false,
     open: true,
+    port: 3000,
   },
   css: {
     postcss: {

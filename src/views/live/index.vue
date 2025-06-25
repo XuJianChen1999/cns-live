@@ -166,7 +166,7 @@ async function runUserJoinLive() {
   for (let i = 0; i < joinedUsers.length; i++) {
     const user = joinedUsers[i]
     joinLive(user.name, user.level)
-    await sleep(500) // 大约每500ms加入一个
+    await sleep(500)
   }
 }
 
@@ -194,7 +194,6 @@ async function runSendComment() {
 }
 
 function handleSend() {
-  console.log(inputText.value)
   sendComment({
     name: '测试用户',
     text: inputText.value,

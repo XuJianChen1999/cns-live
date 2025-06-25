@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-23 17:22:27
+ * @LastEditTime: 2025-06-25 18:29:15
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -41,13 +41,22 @@
               <div
                 v-for="(item, index) in chunk"
                 :key="index"
-                :class="{ active: currentIndex === `${chunkIndex}-${index}` }"
                 class="gift-swipe-item flex-center"
                 @click="selectGift(item, chunkIndex, index)"
               >
-                <img :src="item.img" :class="{ 'zoomed-img': item.animate }" />
-                <span>{{ item.name }}</span>
-                <div class="price">{{ item.price }}</div>
+                <div
+                  class="gift-swipe-item-content"
+                  :style="{
+                    border:
+                      currentIndex === `${chunkIndex}-${index}` ? '1px solid #ffffff1a' : 'none',
+                  }"
+                >
+                  <img :src="item.img" :class="{ 'zoomed-img': item.animate }" />
+                  <span v-if="currentIndex !== `${chunkIndex}-${index}`">{{ item.name }}</span>
+                  <div class="price">{{ item.price }}钻</div>
+                </div>
+
+                <div v-if="currentIndex === `${chunkIndex}-${index}`" class="send-btn">赠送</div>
                 <!-- 涟漪效果 -->
                 <div
                   v-for="ripple in activeEffects[`${chunkIndex}-${index}`]?.ripples || []"
@@ -99,19 +108,23 @@
         <div class="gift-bottom-left flex-center">
           <svg-icon name="gift-diamond" />
           <span>100</span>
-          <div class="gift-bottom-btn flex-center red">充值<span></span></div>
-          <div class="gift-bottom-btn flex-center yellow">兑换<span></span></div>
+          <div class="gift-bottom-btn flex-center red" @click="isShowRecharge = true">
+            充值<span></span>
+          </div>
         </div>
         <div class="gift-bottom-right" @click="sendGift">发送</div>
       </div>
     </div>
   </popup>
+
+  <recharge-modal v-model="isShowRecharge" />
 </template>
 
 <script setup>
-import toast from '@/app/toast'
 import { isEmptyObject } from '@/utils'
+import toast from '@/app/toast'
 import Popup from '@/components/dialog/from-bottom'
+import RechargeModal from '@/views/live/components/recharge-modal'
 import chunkArray from './gifts'
 
 const modelValue = defineModel({ type: Boolean, default: false })
@@ -119,6 +132,7 @@ const emits = defineEmits(['close', 'select'])
 
 const currentIndex = ref(null)
 const selected = ref(null)
+const isShowRecharge = ref(false)
 const giftList = ref(chunkArray())
 const activeEffects = ref({})
 const MAX_TOTAL_PARTICLES = 50 // 全局最大粒子数量

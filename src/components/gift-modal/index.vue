@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-25 18:29:15
+ * @LastEditTime: 2025-06-26 12:03:38
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -12,6 +12,7 @@
     border-radius="0"
     mask-mode="light"
     height="auto"
+    tag="span"
     :show-line="false"
     @close="close"
   >

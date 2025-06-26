@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:52:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-25 17:00:11
+ * @LastEditTime: 2025-06-26 12:04:22
  * @Description: 底部弹出弹窗
 -->
 <template>
@@ -104,12 +104,19 @@ watch(
       document.body.style.position = 'fixed'
       document.body.style.top = -scroll.value + 'px'
 
-      const maskTemplate = `<div class="Mask fade-in ${props.maskMode}"></div>`
+      const maskClassName = `Mask fade-in ${props.maskMode}`
+      const maskTemplate = `<div class="${maskClassName}" data-tag="${props.tag}"></div>`
       const mask = new Dom().create(maskTemplate)
+      const maskEl = mask.els[0]
+      maskEl.dataset.tag = props.tag
+      maskEl.classList.add(`mask-${props.tag}`)
       setTimeout(() => {
         mask.on('click', (event) => {
           stopPropagation(event)
-          close()
+          const targetTag = event.target?.dataset?.tag
+          if (targetTag === props.tag) {
+            close()
+          }
         })
       }, 200)
       page.appendChild(mask.els[0])
@@ -118,8 +125,15 @@ watch(
       document.body.style.position = 'static'
       document.documentElement.scrollTop = scroll.value
 
-      const mask = new Dom('.Mask').replaceClass('fade-in', 'fade-out')
-      setTimeout(() => mask.remove(), 250)
+      // const mask = new Dom(`.Mask[data-tag="${props.tag}"]`).replaceClass('fade-in', 'fade-out')
+      // setTimeout(() => mask.remove(), 250)
+      const mask = document.querySelector(`.mask-${props.tag}`)
+      if (mask) {
+        mask.classList.replace('fade-in', 'fade-out')
+        setTimeout(() => {
+          mask.remove()
+        }, 250)
+      }
     }
   },
 )

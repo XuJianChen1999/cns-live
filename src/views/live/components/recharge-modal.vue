@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-25 16:25:55
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-25 17:42:31
+ * @LastEditTime: 2025-06-26 12:03:39
  * @Description: 充值弹窗
 -->
 <template>
@@ -13,6 +13,7 @@
     border-radius="16.4"
     mode="light"
     height="auto"
+    tag="div"
     @close="close"
   >
     <div class="recharge">

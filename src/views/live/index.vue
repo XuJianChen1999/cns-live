@@ -1,5 +1,5 @@
 <template>
-  <div ref="page" class="LivePage">
+  <div ref="page" class="LivePage" id="live-page">
     <div class="live-wrapper">
       <!-- <live-room role="audience" /> -->
       <video
@@ -91,7 +91,11 @@
       </div>
     </div>
 
-    <gift-modal v-model="isShowGiftModal" @select="handleSelectGift" />
+    <gift-modal
+      v-model="isShowGiftModal"
+      @close="isShowGiftModal = false"
+      @select="handleSelectGift"
+    />
   </div>
 </template>
 <script setup>

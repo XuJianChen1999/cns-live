@@ -95,7 +95,9 @@
       v-model="isShowGiftModal"
       @close="isShowGiftModal = false"
       @select="handleSelectGift"
+      @click-protocol="isShowProtocol = true"
     />
+    <recharge-protocol-modal v-model="isShowProtocol" @close="isShowProtocol = false" />
   </div>
 </template>
 <script setup>
@@ -103,6 +105,8 @@ import { sleep } from '@/utils'
 import GiftModal from '@/components/gift-modal'
 import LiveRoom from '@/components/live-room'
 import GiftComp from './components/gift'
+import RechargeProtocolModal from './components/recharge-protocol-modal'
+
 import JoinedLiveComp from './components/joined-live'
 import BarrageComp from './components/barrage'
 import LoveIcon from '@/assets/images/love.webp'
@@ -115,6 +119,7 @@ const bottomEl = ref(null)
 const comments = ref(null)
 const commentsWrapper = ref(null)
 const isShowGiftModal = ref(false)
+const isShowProtocol = ref(false)
 const inputText = ref('')
 const list = ref([])
 

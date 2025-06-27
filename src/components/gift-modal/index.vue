@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-26 12:03:38
+ * @LastEditTime: 2025-06-27 17:17:42
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -118,7 +118,7 @@
     </div>
   </popup>
 
-  <recharge-modal v-model="isShowRecharge" />
+  <recharge-modal v-model="isShowRecharge" @click-protocol="emits('click-protocol')" />
 </template>
 
 <script setup>
@@ -129,7 +129,7 @@ import RechargeModal from '@/views/live/components/recharge-modal'
 import chunkArray from './gifts'
 
 const modelValue = defineModel({ type: Boolean, default: false })
-const emits = defineEmits(['close', 'select'])
+const emits = defineEmits(['close', 'select', 'click-protocol'])
 
 const currentIndex = ref(null)
 const selected = ref(null)

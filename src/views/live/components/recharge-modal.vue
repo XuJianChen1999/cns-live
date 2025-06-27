@@ -2,25 +2,16 @@
  * @Author: Xujianchen
  * @Date: 2025-06-25 16:25:55
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-27 15:50:40
+ * @LastEditTime: 2025-06-27 17:34:23
  * @Description: 充值弹窗
 -->
 <template>
-  <popup
-    :model-value="modelValue"
-    :show-line="false"
-    page-id="app"
-    border-radius="16.4"
-    mode="light"
-    height="auto"
-    tag="div"
-    @close="close"
-  >
+  <popup :model-value="modelValue" position="bottom" @close="close">
     <div class="recharge">
       <!-- 头部 -->
       <div class="recharge-title">
         <span>充值</span>
-        <img src="@/assets/svg/close-icon-black.svg" />
+        <img src="@/assets/svg/close-icon-black.svg" @click="close" />
       </div>
       <div class="recharge-header flex-center">
         <div class="recharge-header-left flex-center">
@@ -29,11 +20,10 @@
             <svg-icon name="gift-diamond" style="margin-right: 9.9px" /> 200
           </div>
         </div>
-        <div class="recharge-header-right flex-center">
+        <div class="recharge-header-right flex-center" @click="isShowDetails = true">
           钻石明细 <img src="@/assets/svg/arrow-right.svg" />
         </div>
       </div>
-
       <!-- 充值列表 -->
       <div class="recharge-list flex-center">
         <div
@@ -63,7 +53,7 @@
           </div>
           <img src="@/assets/svg/arrow-bottom.svg" />
         </div>
-        <div class="recharge-payment-agree" @click="isShowProtocol = true">
+        <div class="recharge-payment-agree" @click="emits('click-protocol')">
           《Coinexus充值服务协议》
         </div>
         <div class="recharge-payment-btn" @click="close">
@@ -73,18 +63,18 @@
     </div>
   </popup>
 
-  <recharge-protocol-modal v-model="isShowProtocol" />
+  <trade-details-modal v-model="isShowDetails" @close="isShowDetails = false" />
 </template>
 
 <script setup>
-import popup from '@/components/dialog/from-bottom'
-import RechargeProtocolModal from './recharge-protocol-modal'
+import popup from '@/components/dialog/popup'
+import TradeDetailsModal from './trade-details-modal'
 
 const modelValue = defineModel({ type: Boolean, default: false })
-const emits = defineEmits(['close'])
+const emits = defineEmits(['close', 'click-protocol'])
 
 const current = ref({})
-const isShowProtocol = ref(false)
+const isShowDetails = ref(false)
 const rechargeList = [
   { name: 100, price: 1 },
   { name: 200, price: 2 },

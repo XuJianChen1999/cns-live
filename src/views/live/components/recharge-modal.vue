@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-25 16:25:55
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-26 12:03:39
+ * @LastEditTime: 2025-06-27 15:50:40
  * @Description: 充值弹窗
 -->
 <template>
@@ -18,6 +18,10 @@
   >
     <div class="recharge">
       <!-- 头部 -->
+      <div class="recharge-title">
+        <span>充值</span>
+        <img src="@/assets/svg/close-icon-black.svg" />
+      </div>
       <div class="recharge-header flex-center">
         <div class="recharge-header-left flex-center">
           <span>账户余额</span>
@@ -26,9 +30,10 @@
           </div>
         </div>
         <div class="recharge-header-right flex-center">
-          充值记录 <img src="@/assets/svg/arrow-right.svg" />
+          钻石明细 <img src="@/assets/svg/arrow-right.svg" />
         </div>
       </div>
+
       <!-- 充值列表 -->
       <div class="recharge-list flex-center">
         <div
@@ -42,7 +47,7 @@
             {{ item.name }}
           </div>
           <span class="recharge-list-item-price">{{ item.price }} USDT</span>
-          <div class="recharge-list-item-gift">{{ index === 0 ? '新手礼包' : '赠2钻' }}</div>
+          <!-- <div class="recharge-list-item-gift">{{ index === 0 ? '新手礼包' : '赠2钻' }}</div> -->
         </div>
       </div>
       <!-- 支付方式 -->
@@ -51,29 +56,35 @@
         <div class="recharge-payment-select flex-center">
           <div class="recharge-payment-select-left flex-center">
             <img src="@/assets/svg/payment-select.svg" style="margin-right: 15px" />
-            BTC
+            <div class="recharge-payment-select-right">
+              <div>BTC</div>
+              <div>265,46.00 ETH</div>
+            </div>
           </div>
-          <div class="recharge-payment-select-right">
-            <div>34.8568</div>
-            <div>$ 252.82</div>
-          </div>
+          <img src="@/assets/svg/arrow-bottom.svg" />
         </div>
-        <div class="recharge-payment-agree">《Coinexus充值服务协议》</div>
+        <div class="recharge-payment-agree" @click="isShowProtocol = true">
+          《Coinexus充值服务协议》
+        </div>
         <div class="recharge-payment-btn" @click="close">
           立即充值 <span v-if="current?.price">{{ current?.price }} USDT</span>
         </div>
       </div>
     </div>
   </popup>
+
+  <recharge-protocol-modal v-model="isShowProtocol" />
 </template>
 
 <script setup>
 import popup from '@/components/dialog/from-bottom'
+import RechargeProtocolModal from './recharge-protocol-modal'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close'])
 
 const current = ref({})
+const isShowProtocol = ref(false)
 const rechargeList = [
   { name: 100, price: 1 },
   { name: 200, price: 2 },
@@ -96,11 +107,26 @@ function close() {
 
 <style scoped lang="scss">
 .recharge {
-  padding: 32px 15px 24px;
+  padding: 16px 15px;
   // 头部
+  &-title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #212121ff;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 30px;
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
   &-header {
     justify-content: space-between;
     margin-bottom: 23px;
+
     &-left {
       span {
         color: #323333ff;

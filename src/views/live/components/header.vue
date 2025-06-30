@@ -1,24 +1,40 @@
 <template>
-  <div class="header flex">
-    <img
-      v-show="showBack"
-      class="header-back"
-      src="@/assets/svg/arrow-left.svg"
-      @click="emits('back')"
-    />
-    <span>{{ title }}</span>
-    <img
-      v-show="showClose"
-      class="header-close"
-      src="@/assets/svg/close-icon-black.svg"
-      @click="emits('close')"
-    />
+  <div class="header">
+    <slot name="left">
+      <img
+        v-if="showBack && !leftText"
+        class="header-left"
+        src="@/assets/svg/arrow-left.svg"
+        @click="emits('click-left')"
+      />
+      <span v-if="leftText" class="header-left text" @click="emits('click-left')">{{
+        leftText
+      }}</span>
+    </slot>
+    <span class="header-title">{{ title }}</span>
+    <slot name="right">
+      <img
+        v-if="showClose && !rightText"
+        class="header-right"
+        src="@/assets/svg/close-icon-black.svg"
+        @click="emits('click-right')"
+      />
+      <span
+        v-else
+        class="header-right text"
+        :style="rightTextStyle"
+        @click="emits('click-right')"
+        >{{ rightText }}</span
+      >
+    </slot>
   </div>
 </template>
 
 <script setup>
 defineProps({
   title: String,
+  leftText: String,
+  rightText: String,
   showBack: {
     type: Boolean,
     default: false,
@@ -27,29 +43,39 @@ defineProps({
     type: Boolean,
     default: true,
   },
+  rightTextStyle: {
+    type: Object,
+    default: () => ({}),
+  },
 })
-const emits = defineEmits(['back', 'close'])
+const emits = defineEmits(['click-right', 'click-left'])
 </script>
 
 <style scoped lang="scss">
 .header {
   position: relative;
-  align-items: center;
-  justify-content: center;
   padding: 16px;
-  color: #212121ff;
-  font-weight: 600;
-  font-size: 16px;
-  img {
+  &-left {
     position: absolute;
     top: 16px;
-    z-index: 19;
+    left: 16px;
   }
-  &-back {
-    left: 0;
+  &-right {
+    position: absolute;
+    top: 16px;
+    right: 16px;
   }
-  &-close {
-    right: 0;
+  &-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #212121;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .text {
+    color: #22252d;
+    font-size: 14px;
   }
 }
 </style>

@@ -2,11 +2,11 @@
  * @Author: Xujianchen
  * @Date: 2025-06-25 16:25:55
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-27 17:34:23
+ * @LastEditTime: 2025-06-30 10:52:39
  * @Description: 充值弹窗
 -->
 <template>
-  <popup :model-value="modelValue" position="bottom" @close="close">
+  <popup :model-value="modelValue" round position="bottom" @close="close">
     <div class="recharge">
       <!-- 头部 -->
       <div class="recharge-title">
@@ -56,7 +56,7 @@
         <div class="recharge-payment-agree" @click="emits('click-protocol')">
           《Coinexus充值服务协议》
         </div>
-        <div class="recharge-payment-btn" @click="close">
+        <div class="recharge-payment-btn" @click="confirmPay">
           立即充值 <span v-if="current?.price">{{ current?.price }} USDT</span>
         </div>
       </div>
@@ -69,6 +69,7 @@
 <script setup>
 import popup from '@/components/dialog/popup'
 import TradeDetailsModal from './trade-details-modal'
+import showConfirmDialog from '@/app/config-dialog'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close', 'click-protocol'])
@@ -86,6 +87,16 @@ const rechargeList = [
 
 function select(item, index) {
   current.value = { ...item, index }
+}
+
+async function confirmPay() {
+  const res = await showConfirmDialog({
+    content: '你已成功地完成购买',
+    confirmBtnText: '好',
+    type: 'success',
+    showCancelBtn: false,
+  })
+  console.log(res)
 }
 
 function close() {

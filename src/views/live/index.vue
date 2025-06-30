@@ -327,6 +327,10 @@ function sendBarrage({ name = 'name11', text = '随便一段话' } = {}) {
 <style>
 @import '@/assets/styles/index.css';
 @import './global.css';
+
+:deep(.van-popup) {
+  background-color: transparent !important;
+}
 </style>
 
 <style scoped>

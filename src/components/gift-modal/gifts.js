@@ -1,97 +1,44 @@
 const giftList = [
   {
-    img: new URL('@/assets/images/gift-lipao.png', import.meta.url).href,
-    name: '礼炮',
-    price: 2000,
-  },
-  {
     img: new URL('@/assets/images/gift-momoda.png', import.meta.url).href,
     name: '么么哒',
     price: 2000,
   },
   {
-    img: new URL('@/assets/images/gift-bixin.png', import.meta.url).href,
-    name: '笔芯',
+    img: new URL('@/assets/images/gift-ganbei.png', import.meta.url).href,
+    name: '干杯',
     price: 2000,
   },
   {
-    img: new URL('@/assets/images/gift-koushao.png', import.meta.url).href,
-    name: '爱的口哨',
-    price: 2000,
-  },
-  { img: new URL('@/assets/images/gift-xin.png', import.meta.url).href, name: '礼炮', price: 2000 },
-  {
-    img: new URL('@/assets/images/gift-youlun.png', import.meta.url).href,
-    name: '烂漫邮轮',
+    img: new URL('@/assets/images/gift-bangbangtang.png', import.meta.url).href,
+    name: '棒棒糖',
     price: 2000,
   },
   {
-    img: new URL('@/assets/images/gift-youleyuan.png', import.meta.url).href,
+    img: new URL('@/assets/images/gift-flower.png', import.meta.url).href,
+    name: '花花',
+    price: 2000,
+  },
+  {
+    img: new URL('@/assets/images/gift-kele.png', import.meta.url).href,
     name: '礼炮',
     price: 2000,
   },
   {
-    img: new URL('@/assets/images/gift-lipao.png', import.meta.url).href,
+    img: new URL('@/assets/images/gift-qiqiu.png', import.meta.url).href,
+    name: '气球',
+    price: 2000,
+  },
+  {
+    img: new URL('@/assets/images/gift-feiji.png', import.meta.url).href,
     name: '礼炮',
     price: 2000,
   },
   {
-    img: new URL('@/assets/images/gift-lipao.png', import.meta.url).href,
+    img: new URL('@/assets/images/gift-laba.png', import.meta.url).href,
     name: '礼炮',
     price: 2000,
   },
-  {
-    img: new URL('@/assets/images/gift-momoda.png', import.meta.url).href,
-    name: '么么哒',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-bixin.png', import.meta.url).href,
-    name: '笔芯',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-koushao.png', import.meta.url).href,
-    name: '爱的口哨',
-    price: 2000,
-  },
-  { img: new URL('@/assets/images/gift-xin.png', import.meta.url).href, name: '礼炮', price: 2000 },
-  {
-    img: new URL('@/assets/images/gift-youlun.png', import.meta.url).href,
-    name: '烂漫邮轮',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-youleyuan.png', import.meta.url).href,
-    name: '礼炮',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-lipao.png', import.meta.url).href,
-    name: '礼炮',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-lipao.png', import.meta.url).href,
-    name: '礼炮',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-momoda.png', import.meta.url).href,
-    name: '么么哒',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-bixin.png', import.meta.url).href,
-    name: '笔芯',
-    price: 2000,
-  },
-  {
-    img: new URL('@/assets/images/gift-koushao.png', import.meta.url).href,
-    name: '爱的口哨',
-    price: 2000,
-  },
-  { img: new URL('@/assets/images/gift-xin.png', import.meta.url).href, name: '礼炮', price: 2000 },
 ].map((item) => ({
   ...item,
   clickCount: 0,

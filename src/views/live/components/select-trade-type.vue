@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 18:11:50
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 11:34:42
+ * @LastEditTime: 2025-06-30 14:23:33
  * @Description: 选择交易类型
 -->
 <template>
@@ -70,6 +70,7 @@ function close() {
         color: #3751ffff;
         border: 1px solid #3751ffff;
         font-weight: bold;
+        background-color: #f5f6f8;
       }
     }
   }

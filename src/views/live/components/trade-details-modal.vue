@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 17:27:41
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 11:29:20
+ * @LastEditTime: 2025-06-30 14:31:03
  * @Description: 钻石明细
 -->
 <template>
@@ -27,7 +27,9 @@
       <div class="trade-list">
         <div v-for="(item, index) in list" :key="index" class="trade-list-item">
           <div class="trade-list-item-total flex">
-            <div class="flex">2025年6月 <img src="@/assets/svg/triggle.svg" alt="" /></div>
+            <div class="flex">
+              2025年6月 <img src="@/assets/svg/triggle.svg" style="margin-left: 4px" />
+            </div>
             <div class="flex">
               <span style="margin-right: 12px">收入 91钻石</span>
               <span>转出 0钻石</span>
@@ -182,7 +184,7 @@ function handleClickLeft() {
     justify-content: center;
     color: #22252dff;
     margin-bottom: 8px;
-    svg {
+    img {
       margin-left: 4px;
     }
   }

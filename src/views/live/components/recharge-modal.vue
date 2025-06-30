@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-25 16:25:55
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 11:25:23
+ * @LastEditTime: 2025-06-30 14:22:06
  * @Description: 充值弹窗
 -->
 <template>
@@ -131,10 +131,12 @@ function close() {
         color: #323333ff;
         font-size: 16px;
         margin-right: 10px;
+        font-weight: 500;
       }
       div {
         font-size: 16px;
         color: #323333ff;
+        font-weight: 500;
       }
     }
     &-right {
@@ -161,7 +163,7 @@ function close() {
         border 0.3s;
       &.active {
         border: 1px solid #3751ffff;
-        background: #f045690d;
+        background-color: #f5f6f8;
         .recharge-list-item-name,
         .recharge-list-item-price {
           color: #3751ffff;

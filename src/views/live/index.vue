@@ -21,6 +21,7 @@
     </div>
     <div class="float">
       <div ref="topEl" class="top">
+        <!-- 信息 -->
         <div class="left">
           <div class="liver">
             <img class="avatar" src="@/assets/images/host-avatar.png" alt="" />
@@ -33,18 +34,20 @@
             </div>
           </div>
         </div>
+        <!-- 直播间人数列表 -->
         <div class="right">
           <div class="follower">
             <img src="@/assets/images/host-avatar.png" alt="" class="round" />
             <img src="@/assets/images/host-avatar.png" alt="" class="round" />
             <img src="@/assets/images/host-avatar.png" alt="" class="round" />
-            <div class="count-number">107</div>
+            <div class="count-number" @click="isShowLiveNumber = true">107</div>
             <svg-icon name="close-icon" size="24" @click="$router.go(-1)" />
           </div>
         </div>
       </div>
       <div ref="bottomEl" class="bottom">
         <div class="left">
+          <!-- 实时评论 -->
           <div class="comments" ref="comments">
             <div class="comments-wrapper" ref="commentsWrapper">
               <div class="comment notice">
@@ -64,6 +67,7 @@
               </div>
             </div>
           </div>
+          <!-- 底部操作栏 -->
           <div class="options">
             <div class="input">
               <input
@@ -87,7 +91,6 @@
             </div>
           </div>
         </div>
-        <div class="right"></div>
       </div>
     </div>
 
@@ -98,6 +101,7 @@
       @click-protocol="isShowProtocol = true"
     />
     <recharge-protocol-modal v-model="isShowProtocol" @close="isShowProtocol = false" />
+    <live-number-modal v-model="isShowLiveNumber" />
   </div>
 </template>
 <script setup>
@@ -106,8 +110,8 @@ import GiftModal from '@/components/gift-modal'
 import LiveRoom from '@/components/live-room'
 import GiftComp from './components/gift'
 import RechargeProtocolModal from './components/recharge-protocol-modal'
-
 import JoinedLiveComp from './components/joined-live'
+import LiveNumberModal from './components/live-number-modal'
 import BarrageComp from './components/barrage'
 import LoveIcon from '@/assets/images/love.webp'
 import UserAvatar from '@/assets/images/avatar.png'
@@ -120,6 +124,7 @@ const comments = ref(null)
 const commentsWrapper = ref(null)
 const isShowGiftModal = ref(false)
 const isShowProtocol = ref(false)
+const isShowLiveNumber = ref(false)
 const inputText = ref('')
 const list = ref([])
 

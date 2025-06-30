@@ -41,7 +41,7 @@ defineProps({
   },
   showCancelBtn: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   customStyle: {
     type: Object,

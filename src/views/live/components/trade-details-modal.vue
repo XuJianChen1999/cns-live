@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 17:27:41
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 10:53:56
+ * @LastEditTime: 2025-06-30 11:11:14
  * @Description: 钻石明细
 -->
 <template>
@@ -75,7 +75,11 @@
     </div>
   </popup>
 
-  <select-trade-type v-model="isShowSelect" @select="handleSelectType" />
+  <select-trade-type
+    v-model="isShowSelect"
+    :current-type="tradeTypeIdx"
+    @select="handleSelectType"
+  />
   <trade-detail-info v-model="isShowDetail" @close="isShowDetail = false" />
 </template>
 
@@ -106,8 +110,9 @@ const list = ref(
     { type: '送礼', time: '2025-06-26 10:23', num: 200 },
   ].map((item) => ({ ...item, selected: false })),
 )
-const type = ref('全部')
+const tradeTypeIdx = ref(0)
 
+const type = computed(() => ['全部交易类型', '充值', '送礼'][tradeTypeIdx.value])
 const len = computed(() => list.value.filter((item) => item.selected).length)
 const selectedCount = computed(() =>
   len.value && isShowCheckbox.value ? `删除(${len.value})` : '删除',
@@ -115,7 +120,6 @@ const selectedCount = computed(() =>
 
 // 选择删除
 function handleSelect(item, index) {
-  console.log(item)
   list.value[index] = {
     ...item,
     selected: !item.selected,
@@ -124,7 +128,7 @@ function handleSelect(item, index) {
 
 // 选择交易类型
 function handleSelectType(val) {
-  type.value = val
+  tradeTypeIdx.value = val.index
   isShowSelect.value = false
 }
 
@@ -149,6 +153,8 @@ async function handleClickRight() {
     content: '删除记录后将无法恢复，您将不能再查看该记录',
   })
   console.log(res)
+
+  res === 'confirm' && handleConfirm()
 }
 
 function handleClickLeft() {
@@ -189,7 +195,7 @@ function handleClickLeft() {
     }
   }
   &-list {
-    height: 400px;
+    height: 500px;
     overflow-y: scroll;
     &-item {
       &-total {

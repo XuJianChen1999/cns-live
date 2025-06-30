@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 18:11:50
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-27 18:26:00
+ * @LastEditTime: 2025-06-30 11:10:31
  * @Description: 选择交易类型
 -->
 <template>
@@ -14,10 +14,10 @@
       </div>
       <div class="trade-type-list flex">
         <div
-          v-for="(item, index) in typeList"
+          v-for="(item, index) in ['全部', '充值', '交易']"
           :key="item"
           :class="['trade-type-list-item', { active: current === index }]"
-          @click="select(item)"
+          @click="select(item, index)"
         >
           {{ item }}
         </div>
@@ -30,14 +30,14 @@
 import popup from '@/components/dialog/popup'
 
 const modelValue = defineModel({ type: Boolean, default: false })
+const props = defineProps({ currentType: Number })
 const emits = defineEmits(['close', 'select'])
 
-const current = ref(0)
-const typeList = ['全部', '充值', '交易']
+const current = computed(() => props.currentType || 0)
 
-function select(item) {
+function select(item, index) {
   current.value = item
-  emits('select', item)
+  emits('select', { item, index })
 }
 
 function close() {

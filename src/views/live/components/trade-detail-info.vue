@@ -2,12 +2,12 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 18:47:10
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-28 17:19:59
+ * @LastEditTime: 2025-06-30 11:21:22
  * @Description: 交易详情信息
 -->
 <template>
   <popup :model-value="modelValue" round position="bottom" @close="close">
-    <common-header title="交易详情" show-back :show-close="false" @click-left="close" />
+    <modal-header title="交易详情" show-back :show-close="false" @click-left="close" />
     <div class="detail-info-header">
       <span class="title">给主播送礼</span>
       <span class="price">-200</span>
@@ -34,7 +34,7 @@
 
 <script setup>
 import popup from '@/components/dialog/popup'
-import CommonHeader from './header'
+import ModalHeader from './modal-header'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close'])

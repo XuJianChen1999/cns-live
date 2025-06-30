@@ -2,17 +2,14 @@
  * @Author: Xujianchen
  * @Date: 2025-06-25 16:25:55
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 10:52:39
+ * @LastEditTime: 2025-06-30 11:25:23
  * @Description: 充值弹窗
 -->
 <template>
   <popup :model-value="modelValue" round position="bottom" @close="close">
     <div class="recharge">
       <!-- 头部 -->
-      <div class="recharge-title">
-        <span>充值</span>
-        <img src="@/assets/svg/close-icon-black.svg" @click="close" />
-      </div>
+      <modal-header title="充值" :show-back="false" @click-right="close" />
       <div class="recharge-header flex-center">
         <div class="recharge-header-left flex-center">
           <span>账户余额</span>
@@ -68,8 +65,9 @@
 
 <script setup>
 import popup from '@/components/dialog/popup'
-import TradeDetailsModal from './trade-details-modal'
 import showConfirmDialog from '@/app/config-dialog'
+import TradeDetailsModal from './trade-details-modal'
+import ModalHeader from './modal-header'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close', 'click-protocol'])
@@ -127,7 +125,7 @@ function close() {
   &-header {
     justify-content: space-between;
     margin-bottom: 23px;
-
+    margin-top: 31px;
     &-left {
       span {
         color: #323333ff;

@@ -2,16 +2,19 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 18:11:50
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 11:10:31
+ * @LastEditTime: 2025-06-30 11:34:42
  * @Description: 选择交易类型
 -->
 <template>
-  <popup :model-value="modelValue" position="bottom" round @close="close">
+  <popup
+    :model-value="modelValue"
+    :overlay-style="{ background: '#00000066' }"
+    position="bottom"
+    round
+    @close="close"
+  >
     <div class="trade-type">
-      <div class="trade-type-header">
-        <span>选择交易交易类型</span>
-        <img src="@/assets/svg/close-icon-black.svg" alt="" @click="close" />
-      </div>
+      <modal-header title="选择交易类型" :show-back="false" @click-right="close" />
       <div class="trade-type-list flex">
         <div
           v-for="(item, index) in ['全部', '充值', '交易']"
@@ -28,6 +31,7 @@
 
 <script setup>
 import popup from '@/components/dialog/popup'
+import ModalHeader from './modal-header'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const props = defineProps({ currentType: Number })
@@ -49,22 +53,9 @@ function close() {
 <style scoped lang="scss">
 .trade-type {
   padding: 16px;
-  &-header {
-    position: relative;
-    color: #212121ff;
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 34px;
-    text-align: center;
-    img {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 19;
-    }
-  }
   &-list {
     justify-content: space-between;
+    margin-top: 24px;
     &-item {
       width: 108px;
       height: 72px;

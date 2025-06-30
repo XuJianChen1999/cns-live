@@ -1,3 +1,10 @@
+<!--
+ * @Author: Xujianchen
+ * @Date: 2025-06-19 14:17:55
+ * @LastEditors: Xujianchen
+ * @LastEditTime: 2025-06-30 11:18:55
+ * @Description: 弹幕文字
+-->
 <template>
   <div class="barrage" :style="{ top: top + 'px' }" @animationend="onEnd">
     <div class="type">{{ name }}</div>

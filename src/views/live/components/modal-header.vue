@@ -54,16 +54,15 @@ const emits = defineEmits(['click-right', 'click-left'])
 <style scoped lang="scss">
 .header {
   position: relative;
-  padding: 16px;
   &-left {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 0;
+    left: 0;
   }
   &-right {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 0;
+    right: 0;
   }
   &-title {
     display: block;

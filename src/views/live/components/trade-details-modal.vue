@@ -2,23 +2,25 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 17:27:41
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-30 11:11:14
+ * @LastEditTime: 2025-06-30 11:29:20
  * @Description: 钻石明细
 -->
 <template>
   <popup :model-value="modelValue" round position="bottom" @close="emits('close')">
     <div class="trade">
-      <common-header
-        title="钻石明细"
-        :show-back="!isShowCheckbox"
-        :left-text="isShowCheckbox ? '取消' : null"
-        :right-text="selectedCount"
-        :right-text-style="{
-          color: isShowCheckbox ? '#3751FF' : '#22252d',
-        }"
-        @click-right="handleClickRight"
-        @click-left="handleClickLeft"
-      />
+      <div class="trade-header">
+        <modal-header
+          title="钻石明细"
+          :show-back="!isShowCheckbox"
+          :left-text="isShowCheckbox ? '取消' : null"
+          :right-text="selectedCount"
+          :right-text-style="{
+            color: isShowCheckbox ? '#3751FF' : '#22252d',
+          }"
+          @click-right="handleClickRight"
+          @click-left="handleClickLeft"
+        />
+      </div>
       <div class="trade-type flex" @click="isShowSelect = true">
         {{ type }} <img src="@/assets/svg/triggle.svg" alt="" />
       </div>
@@ -89,7 +91,7 @@ import showConfirmDialog from '@/app/config-dialog'
 import popup from '@/components/dialog/popup'
 import SelectTradeType from './select-trade-type'
 import TradeDetailInfo from './trade-detail-info'
-import CommonHeader from './header'
+import ModalHeader from './modal-header'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close'])
@@ -174,17 +176,7 @@ function handleClickLeft() {
 .trade {
   background-color: #fff;
   &-header {
-    padding: 18px 16px;
-    justify-content: space-between;
-    span:nth-child(2) {
-      color: #212121ff;
-      font-weight: 600;
-      font-size: 16px;
-    }
-    span:last-child {
-      color: #22252dff;
-      font-size: 14px;
-    }
+    padding: 16px;
   }
   &-type {
     justify-content: center;

@@ -2,16 +2,13 @@
  * @Author: Xujianchen
  * @Date: 2025-06-27 15:30:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-27 17:21:30
+ * @LastEditTime: 2025-06-30 11:28:02
  * @Description: 充值协议弹窗
 -->
 <template>
   <popup :model-value="modelValue" round position="bottom" @close="close">
     <div class="protocol">
-      <div class="protocol-header">
-        <span>Coinexus充值服务协议</span>
-        <img src="@/assets/svg/close-icon-black.svg" class="close-icon" @click="close" />
-      </div>
+      <modal-header title="Coinexus充值服务协议" :show-back="false" @click-right="close" />
       <div class="protocol-content">
         <span>更新时间：2025年6月27日</span>
         <span style="margin: 24px 0">生效时间：2025年6月28日</span>
@@ -33,6 +30,7 @@
 
 <script setup>
 import popup from '@/components/dialog/popup'
+import ModalHeader from './modal-header'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close'])

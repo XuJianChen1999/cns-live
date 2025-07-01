@@ -101,7 +101,7 @@
       @click-protocol="isShowProtocol = true"
     />
     <recharge-protocol-modal v-model="isShowProtocol" @close="isShowProtocol = false" />
-    <live-number-modal v-model="isShowLiveNumber" />
+    <live-number-modal v-model="isShowLiveNumber" @close="isShowLiveNumber = false" />
   </div>
 </template>
 <script setup>
@@ -329,7 +329,7 @@ function sendBarrage({ name = 'name11', text = '随便一段话' } = {}) {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import '@/assets/styles/index.css';
 @import './global.css';
 
@@ -341,4 +341,8 @@ function sendBarrage({ name = 'name11', text = '随便一段话' } = {}) {
 <style scoped>
 @import '@/assets/styles/index.css';
 @import './live-page.scss';
+
+:deep(.van-popup) {
+  overflow-y: inherit !important;
+}
 </style>

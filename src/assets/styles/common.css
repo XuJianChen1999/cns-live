@@ -3,7 +3,6 @@
   align-items: center;
 }
 
-.van-dialog {
-  background: #ffffffbf !important;
-  backdrop-filter: blur(80px);
-}
+/* .van-popup {
+  overflow-y: inherit !important;
+} */

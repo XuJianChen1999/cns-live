@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-30 14:46:23
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-01 18:59:48
+ * @LastEditTime: 2025-07-01 21:17:06
  * @Description: 直播间人数弹窗
 -->
 <template>
@@ -22,7 +22,7 @@
         <div v-for="(item, index) in list" :key="index" class="joined-list-item flex-center">
           <div class="left flex-center">
             <span class="rank">{{ index + 1 }}</span>
-            <img class="avatar" src="" alt="" />
+            <img class="avatar" src="" alt="" @click="isShowDetail = true" />
             <div class="level-box">
               <span>{{ item.name }}</span>
               <div class="level">
@@ -61,14 +61,18 @@
       </div>
     </div>
   </popup>
+
+  <joined-user-detail v-model="isShowDetail" @close="isShowDetail = false" />
 </template>
 
 <script setup>
 import popup from '@/components/dialog/popup'
+import JoinedUserDetail from './joined-user-detail'
 
 const modelValue = defineModel({ type: Boolean, default: false })
 const emits = defineEmits(['close'])
 
+const isShowDetail = ref(false)
 const list = [
   {
     name: '玛丽特·里奥',

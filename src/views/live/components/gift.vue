@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-19 11:10:21
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-19 16:10:31
+ * @LastEditTime: 2025-07-02 10:57:37
  * @Description: 礼物弹幕特效
 -->
 <template>

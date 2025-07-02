@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-27 17:17:42
+ * @LastEditTime: 2025-07-02 10:41:09
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -17,7 +17,16 @@
     @close="close"
   >
     <div class="gift">
-      <div class="gift-title">礼物</div>
+      <div class="gift-header flex-center">
+        <div class="gift-header-title">礼物</div>
+        <div class="gift-header-right flex-center">
+          <svg-icon name="gift-diamond" />
+          <span>100</span>
+          <div class="recharge-btn flex-center red" @click="isShowRecharge = true">
+            充值<span></span>
+          </div>
+        </div>
+      </div>
       <!-- 等级 -->
       <div class="gift-grade flex-center">
         <div class="gift-grade-level flex-center">
@@ -105,7 +114,7 @@
         </van-swipe>
       </div>
       <!-- 底部操作部分 -->
-      <div class="gift-bottom flex-center">
+      <!-- <div class="gift-bottom flex-center">
         <div class="gift-bottom-left flex-center">
           <svg-icon name="gift-diamond" />
           <span>100</span>
@@ -114,7 +123,7 @@
           </div>
         </div>
         <div class="gift-bottom-right" @click="sendGift">发送</div>
-      </div>
+      </div> -->
     </div>
   </popup>
 
@@ -164,6 +173,8 @@ async function selectGift(item, chunkIndex, index) {
   clearTimeout(gift.pulseTimer)
   gift.pulseTimer = setTimeout(() => (gift.animate = false), 300)
   selected.value = gift
+
+  sendGift()
 }
 
 // 触发效果

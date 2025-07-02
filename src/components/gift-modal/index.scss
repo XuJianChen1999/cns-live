@@ -3,32 +3,59 @@
   background-color: #0c0b19e0;
   padding-bottom: calc(constant(safe-area-inset-bottom) + 16px);
   padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
-
-  &-title {
-    position: relative;
-    display: inline-flex;
-    flex-direction: column;
-    text-align: center;
-    color: #fff;
-    font-size: 13px;
-    margin-bottom: 18.5px;
-    &::after {
-      position: absolute;
-      top: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      content: '';
-      width: 7px;
-      height: 2px;
-      background-color: #fff;
-      border-radius: 13.5px;
-      margin-top: 7.5px;
+  &-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    &-title {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      text-align: center;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 18.5px;
+      &::after {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        content: '';
+        width: 7px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 13.5px;
+        margin-top: 7.5px;
+      }
+    }
+    &-right {
+      .recharge-btn {
+        position: relative;
+        padding: 4px 12px;
+        font-size: 14px;
+        margin-left: 10px;
+        border-radius: 14px;
+        span {
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          border-right: 1.5px solid #ff3080ff;
+          border-bottom: 1.5px solid #ff3080ff;
+          transform: rotate(-45deg);
+        }
+        &.red {
+          border: 1px solid #ff308033;
+          background: #ff30801a;
+          color: #ff3080ff;
+        }
+      }
     }
   }
 
   &-grade {
     justify-content: space-between;
     &-level {
+      // width: 100%;
       span {
         font-size: 9px;
         color: rgba(255, 255, 255, 0.5);

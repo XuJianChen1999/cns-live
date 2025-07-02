@@ -115,6 +115,7 @@ import LiveNumberModal from './components/live-number-modal'
 import BarrageComp from './components/barrage'
 import LoveIcon from '@/assets/images/love.webp'
 import UserAvatar from '@/assets/images/avatar.png'
+import HostAvatar from '@/assets/images/host-avatar.png'
 
 const page = ref(null)
 const videoEl = ref(null)
@@ -141,7 +142,7 @@ function handleSelectGift(item) {
   sendGift({
     sender: '用户A',
     receiver: '主播B',
-    avatar: UserAvatar,
+    avatar: HostAvatar,
     giftIcon: item.img,
     count: item.count,
   })

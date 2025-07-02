@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-07-01 21:01:58
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-01 21:56:20
+ * @LastEditTime: 2025-07-02 10:18:16
  * @Description: 已加入用户详情
 -->
 <template>
@@ -17,7 +17,8 @@
       <img class="user-avatar" src="" alt="" />
       <div class="user-info flex-center">
         <span>用户昵称</span>
-        <img src="@/assets/svg/user-admin.svg" />
+        <user-level :level="level" />
+        <img src="@/assets/svg/user-admin.svg" style="margin-left: 4px" />
       </div>
       <div class="user-did flex-center">
         <span>DID: 123457</span>
@@ -41,7 +42,16 @@
         <div class="text">级别</div>
         <div class="progress flex-center">
           <img src="@/assets/svg/level-start.svg" alt="" />
-          <div class="progress-bar"></div>
+          <!-- <div class="progress-bar"></div> -->
+          <progress-bar
+            :percentage="70"
+            :show-pivot="false"
+            stroke-width="10"
+            track-color="#E3EBF1"
+            color="linear-gradient(90deg, #3751ff 0%, #912eef 100%)"
+            round="0"
+            style="margin: 0 4px"
+          />
           <img src="@/assets/images/level-end.png" style="width: 16px; height: 16px" />
         </div>
         <div class="next-level">888钻</div>
@@ -56,8 +66,13 @@
 
 <script setup>
 import popup from '@/components/dialog/popup'
+import ProgressBar from '@/components/progress'
+import UserLevel from '@/components/user-level'
 
 const modelValue = defineModel({ type: Boolean, default: false })
+defineProps({
+  level: Number,
+})
 const emits = defineEmits(['close'])
 
 function close() {

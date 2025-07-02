@@ -87,7 +87,7 @@
                 style="margin-right: 8px"
                 @click="isShowGiftModal = true"
               />
-              <svg-icon name="bar-icon" size="40" />
+              <svg-icon name="bar-icon" size="40" @click="isShowMoreAction = true" />
             </div>
           </div>
         </div>
@@ -102,6 +102,7 @@
     />
     <recharge-protocol-modal v-model="isShowProtocol" @close="isShowProtocol = false" />
     <live-number-modal v-model="isShowLiveNumber" @close="isShowLiveNumber = false" />
+    <more-action v-model="isShowMoreAction" @close="isShowMoreAction = false" />
   </div>
 </template>
 <script setup>
@@ -113,6 +114,7 @@ import RechargeProtocolModal from './components/recharge-protocol-modal'
 import JoinedLiveComp from './components/joined-live'
 import LiveNumberModal from './components/live-number-modal'
 import BarrageComp from './components/barrage'
+import MoreAction from './components/more-action'
 import LoveIcon from '@/assets/images/love.webp'
 import UserAvatar from '@/assets/images/avatar.png'
 import HostAvatar from '@/assets/images/host-avatar.png'
@@ -126,6 +128,7 @@ const commentsWrapper = ref(null)
 const isShowGiftModal = ref(false)
 const isShowProtocol = ref(false)
 const isShowLiveNumber = ref(false)
+const isShowMoreAction = ref(false)
 const inputText = ref('')
 const list = ref([])
 

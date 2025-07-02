@@ -186,7 +186,7 @@
 .LivePage .float .bottom .left .comments {
   margin-bottom: 10px;
   overflow: auto;
-  width: 78%;
+  width: 269px;
   height: 200px;
   mask-image: linear-gradient(to top,
       rgba(0, 0, 0, 0) 0%,
@@ -219,7 +219,7 @@
   color: #a4eafd;
 }
 
-.LivePage .float .bottom .left .comments .comment .level {
+.LivePage .float .bottom .left .comments .comment .level-wrap {
   display: inline-block;
 }
 

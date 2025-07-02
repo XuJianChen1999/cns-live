@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 15:53:14
+ * @LastEditTime: 2025-07-02 18:19:54
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -47,12 +47,12 @@
       <div class="gift-list">
         <van-swipe :loop="false" indicator-color="white">
           <van-swipe-item v-for="(chunk, chunkIndex) in giftList" :key="chunkIndex">
-            <div class="gift-swipe flex-center">
+            <div v-longpress:3000="handleLongPress" class="gift-swipe flex-center">
               <div
                 v-for="(item, index) in chunk"
                 :key="index"
                 class="gift-swipe-item flex-center"
-                @click="selectGift(item, chunkIndex, index)"
+                @click.stop="selectGift(item, chunkIndex, index)"
               >
                 <div
                   class="gift-swipe-item-content"
@@ -175,6 +175,10 @@ async function selectGift(item, chunkIndex, index) {
   selected.value = gift
 
   handleSend()
+}
+
+function handleLongPress() {
+  toast('长按了一下')
 }
 
 // 触发效果

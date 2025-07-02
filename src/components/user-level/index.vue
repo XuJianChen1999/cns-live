@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-07-02 10:06:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 10:10:06
+ * @LastEditTime: 2025-07-02 16:53:28
  * @Description: 用户等级
 -->
 <template>
@@ -25,14 +25,44 @@ const levelBgMap = {
     iconBgColor: '#821CED',
     iconURL: new URL('@/assets/svg/level-crown.svg', import.meta.url).href,
   },
+  9: {
+    bgColor: '#821CED',
+    iconBgColor: '#821CED',
+    iconURL: new URL('@/assets/svg/level-diamond.svg', import.meta.url).href,
+  },
+  8: {
+    bgColor: '#951BD3',
+    iconBgColor: '#951BD3',
+    iconURL: new URL('@/assets/svg/level-diamond.svg', import.meta.url).href,
+  },
   7: {
     bgColor: '#B819A9',
     iconBgColor: '#B819A9',
     iconURL: new URL('@/assets/svg/level-diamond.svg', import.meta.url).href,
   },
+  6: {
+    bgColor: '#E7166B',
+    iconBgColor: '#E7166B',
+    iconURL: new URL('@/assets/svg/level-star.svg', import.meta.url).href,
+  },
+  5: {
+    bgColor: '#F15A4E',
+    iconBgColor: '#F15A4E',
+    iconURL: new URL('@/assets/svg/level-star.svg', import.meta.url).href,
+  },
+  4: {
+    bgColor: '#F77D3E',
+    iconBgColor: '#F77D3E',
+    iconURL: new URL('@/assets/svg/level-star.svg', import.meta.url).href,
+  },
   3: {
     bgColor: '#FEAD2A',
     iconBgColor: '#FEAD2A',
+    iconURL: new URL('@/assets/svg/level-star.svg', import.meta.url).href,
+  },
+  2: {
+    bgColor: '#8CB760',
+    iconBgColor: '#8CB760',
     iconURL: new URL('@/assets/svg/level-star.svg', import.meta.url).href,
   },
   1: {

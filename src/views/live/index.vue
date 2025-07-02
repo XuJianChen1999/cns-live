@@ -56,13 +56,10 @@
                 >
               </div>
               <div class="comment" :key="j" v-for="(i, j) in list">
-                <div class="level">
-                  <div class="wrapper">
-                    <svg-icon name="level" size="12" />
-                    <span>30</span>
-                  </div>
+                <div class="level-wrap">
+                  <user-level :level="8" style="margin-right: 8px" />
                 </div>
-                <span class="name">{{ i.name }}</span>
+                <span class="name">{{ i.name }}：</span>
                 <span class="text">{{ i.text }}</span>
               </div>
             </div>
@@ -108,6 +105,7 @@
 <script setup>
 import { sleep } from '@/utils'
 import GiftModal from '@/components/gift-modal'
+import UserLevel from '@/components/user-level'
 import LiveRoom from '@/components/live-room'
 import GiftComp from './components/gift'
 import RechargeProtocolModal from './components/recharge-protocol-modal'

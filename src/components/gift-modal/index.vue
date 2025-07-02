@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 10:41:09
+ * @LastEditTime: 2025-07-02 15:53:14
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -174,7 +174,7 @@ async function selectGift(item, chunkIndex, index) {
   gift.pulseTimer = setTimeout(() => (gift.animate = false), 300)
   selected.value = gift
 
-  sendGift()
+  handleSend()
 }
 
 // 触发效果
@@ -227,7 +227,6 @@ function triggerEffects(id) {
 function cleanupExpiredEffects(id) {
   const now = Date.now()
   if (isEmptyObject(activeEffects.value)) return
-  console.log(activeEffects.value)
 
   // 清理过期波纹
   activeEffects.value[id].ripples = activeEffects.value[id].ripples.filter(
@@ -247,7 +246,7 @@ function cleanupExpiredEffects(id) {
   }
 }
 
-function sendGift() {
+function handleSend() {
   if (!currentIndex.value) {
     return toast('请选择一个礼物')
   }

@@ -131,6 +131,8 @@ const list = ref([])
 
 const activeGiftTops = []
 const activeBarrages = []
+const activeGiftMap = new Map()
+const CLICK_INTERVAL = 2500 // 送礼点击间隔时间
 
 onMounted(() => {
   runUserJoinLive()
@@ -145,6 +147,7 @@ function handleSelectGift(item) {
     avatar: HostAvatar,
     giftIcon: item.img,
     count: item.count,
+    giftId: item.giftId,
   })
 }
 
@@ -223,8 +226,26 @@ function sendGift({
   receiver = '主播B',
   avatar = UserAvatar,
   giftIcon = LoveIcon,
+  giftId = 'defaultId',
   count = 1,
 } = {}) {
+  if (activeGiftMap.has(giftId)) {
+    const giftInstance = activeGiftMap.get(giftId)
+    giftInstance.count += count
+
+    giftInstance.update(giftInstance.count)
+
+    clearTimeout(giftInstance.timeout)
+    giftInstance.timeout = setTimeout(() => {
+      giftInstance.app.unmount()
+      giftInstance.container.remove()
+      const index = activeGiftTops.indexOf(giftInstance.top)
+      if (index !== -1) activeGiftTops.splice(index, 1)
+      activeGiftMap.delete(giftId)
+    }, CLICK_INTERVAL)
+    return
+  }
+
   const container = document.createElement('div')
   document.body.appendChild(container)
   // const baseTop = window.innerHeight  * 0.6
@@ -239,26 +260,53 @@ function sendGift({
   }
   activeGiftTops.push(top)
 
+  let currentCount = count
+  let updateCount
+
   const app = createApp({
-    render() {
-      return h(GiftComp, {
-        sender,
-        receiver,
-        avatar,
-        giftIcon,
-        count,
-        top,
-        onRemove: () => {
-          app.unmount()
-          container.remove()
-          const index = activeGiftTops.indexOf(top)
-          if (index !== -1) activeGiftTops.splice(index, 1)
-        },
-      })
+    setup() {
+      const countRef = ref(currentCount)
+      updateCount = (newCount) => {
+        countRef.value = newCount
+      }
+
+      return () =>
+        h(GiftComp, {
+          sender,
+          receiver,
+          avatar,
+          giftIcon,
+          count: countRef.value,
+          top,
+          onRemove: () => {
+            app.unmount()
+            container.remove()
+            const index = activeGiftTops.indexOf(top)
+            if (index !== -1) activeGiftTops.splice(index, 1)
+            activeGiftMap.delete(giftId)
+          },
+        })
     },
   })
 
   app.mount(container)
+
+  const timeout = setTimeout(() => {
+    app.unmount()
+    container.remove()
+    const index = activeGiftTops.indexOf(top)
+    if (index !== -1) activeGiftTops.splice(index, 1)
+    activeGiftMap.delete(giftId)
+  }, CLICK_INTERVAL)
+
+  activeGiftMap.set(giftId, {
+    count,
+    top,
+    app,
+    update: updateCount,
+    timeout, // 存储定时器
+    container, // 存储容器
+  })
 }
 
 // 用户进入直播间

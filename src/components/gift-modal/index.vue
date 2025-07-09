@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-20 10:40:20
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 18:19:54
+ * @LastEditTime: 2025-07-09 10:52:40
  * @Description: 礼物弹窗组件
 -->
 <template>
@@ -178,7 +178,7 @@ async function selectGift(item, chunkIndex, index) {
 }
 
 function handleLongPress() {
-  toast('长按了一下')
+  // toast('长按了一下')
 }
 
 // 触发效果

@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-18 10:00:58
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-19 09:46:12
+ * @LastEditTime: 2025-07-09 14:08:49
  * @Description: 首页
 -->
 <template>
@@ -18,7 +18,7 @@
         </div>
         <div class="studio-living-list-item-bottom">
           <img src="@/assets/images/avatar.png" />
-          <span>这里是一个项目名2</span>
+          <span>直播间{{ item }}</span>
         </div>
       </div>
     </div>

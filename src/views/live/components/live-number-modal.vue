@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-06-30 14:46:23
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 10:12:32
+ * @LastEditTime: 2025-07-09 11:25:17
  * @Description: 直播间人数弹窗
 -->
 <template>
@@ -16,13 +16,13 @@
     <div class="joined">
       <div class="joined-header flex-center">
         <span>在线（184）</span>
-        <img src="@/assets/svg/close-icon-black.svg" alt="" />
+        <img src="@/assets/svg/close-icon-black.svg" alt="" @click="close" />
       </div>
       <div class="joined-list">
         <div v-for="(item, index) in list" :key="index" class="joined-list-item flex-center">
           <div class="left flex-center">
             <span class="rank">{{ index + 1 }}</span>
-            <img class="avatar" src="" alt="" @click="openDetail(item)" />
+            <img class="avatar" :src="item.avatar" @click="openDetail(item)" />
             <div class="level-box">
               <span>{{ item.name }}</span>
               <user-level :level="item.level" />
@@ -36,7 +36,7 @@
       </div>
       <div class="joined-bottom flex-center">
         <div class="left flex-center">
-          <img class="avatar" src="" alt="" />
+          <img class="avatar" src="@/assets/images/avatar1.png" alt="" />
           <div class="name">
             <span>詹姆斯</span>
             <div class="flex-center"><img src="@/assets/svg/gift-diamond.svg" alt="" /> 0</div>
@@ -71,31 +71,31 @@ const list = [
     name: '玛丽特·里奥',
     level: 10,
     diamond: 2000,
+    avatar: new URL('@/assets/images/avatar1.png', import.meta.url).href,
   },
   {
     name: '吕子鑫',
     level: 10,
     diamond: 2000,
+    avatar: new URL('@/assets/images/avatar2.png', import.meta.url).href,
   },
   {
     name: '龙恩林',
     level: 10,
     diamond: 2000,
+    avatar: new URL('@/assets/images/avatar3.png', import.meta.url).href,
   },
   {
     name: '陈力星',
     level: 7,
     diamond: 2000,
+    avatar: new URL('@/assets/images/avatar4.png', import.meta.url).href,
   },
   {
     name: '刘宇',
     level: 3,
     diamond: 2000,
-  },
-  {
-    name: '杨江',
-    level: 1,
-    diamond: 2000,
+    avatar: new URL('@/assets/images/avatar5.png', import.meta.url).href,
   },
 ]
 

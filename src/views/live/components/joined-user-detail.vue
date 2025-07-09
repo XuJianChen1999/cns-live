@@ -2,7 +2,7 @@
  * @Author: Xujianchen
  * @Date: 2025-07-01 21:01:58
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 10:18:16
+ * @LastEditTime: 2025-07-09 14:07:19
  * @Description: 已加入用户详情
 -->
 <template>
@@ -14,7 +14,7 @@
     @close="close"
   >
     <div class="user flex-center">
-      <img class="user-avatar" src="" alt="" />
+      <img class="user-avatar" src="@/assets/images/avatar1.png" alt="" />
       <div class="user-info flex-center">
         <span>用户昵称</span>
         <user-level :level="level" />

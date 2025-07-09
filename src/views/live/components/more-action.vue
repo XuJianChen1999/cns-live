@@ -2,14 +2,20 @@
  * @Author: Xujianchen
  * @Date: 2025-07-02 16:07:39
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-07-02 16:17:26
+ * @LastEditTime: 2025-07-09 10:50:04
  * @Description: more action
 -->
 <template>
   <popup :model-value="modelValue" position="bottom" round @close="close">
-    <div class="more-action">
-      <img src="@/assets/svg/share.svg" />
-      <img src="@/assets/svg/forward.svg" />
+    <div class="more-action flex-center">
+      <div class="more-action-item flex-center">
+        <img src="@/assets/svg/share.svg" />
+        <span>分享</span>
+      </div>
+      <div class="more-action-item flex-center">
+        <img src="@/assets/svg/forward.svg" />
+        <span>转发</span>
+      </div>
     </div>
   </popup>
 </template>
@@ -31,8 +37,15 @@ function close() {
   height: calc(172px - 24px);
   padding-top: 24px;
   padding-left: 24px;
-  img {
+  &-item {
+    flex-direction: column;
+    justify-content: center;
     margin-right: 24px;
+  }
+  span {
+    color: #58667e;
+    font-size: 12px;
+    margin-top: 6px;
   }
 }
 </style>

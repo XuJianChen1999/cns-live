@@ -1,10 +1,3 @@
-/*
- * @Author: Xujianchen
- * @Date: 2025-06-16 15:29:47
- * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-25 16:24:18
- * @Description:
- */
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
@@ -16,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 import postcssPxToViewport from 'postcss-px-to-viewport'
 
 export default defineConfig({
+  // base: `/cns-live/`,
   plugins: [
     vue(),
     AutoImport({ imports: ['vue', 'vue-router'] }),
@@ -33,6 +27,21 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
+  },
+  build: {
+    // outDir: 'cns-live',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+        },
+      },
+    },
   },
   server: {
     open: true,

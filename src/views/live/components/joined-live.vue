@@ -2,11 +2,11 @@
  * @Author: Xujianchen
  * @Date: 2025-06-19 11:05:38
  * @LastEditors: Xujianchen
- * @LastEditTime: 2025-06-19 11:45:10
+ * @LastEditTime: 2025-07-09 10:38:09
  * @Description: 进入直播间弹幕
 -->
 <template>
-  <div class="user-joined" @animationend="$emit('end')">
+  <div class="user-joined flex-center" @animationend="$emit('end')">
     <div class="level">
       <div class="wrapper">
         <img :src="LoveIcon" alt="" />

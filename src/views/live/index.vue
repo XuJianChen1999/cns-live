@@ -6,7 +6,7 @@
         ref="videoEl"
         src="@/assets/example.mp4"
         poster="https://dy.ttentau.top/images/jwWCPZVTIA4IKM-8WipLF.png"
-        muted
+        :muted="false"
         loop
         x5-video-player-type="h5-page"
         x5-video-player-fullscreen="false"
@@ -27,7 +27,7 @@
             <img class="avatar" src="@/assets/images/host-avatar.png" alt="" />
             <div class="desc">
               <div class="desc-wrapper">
-                <div class="name">这里是主播设置的名字啊</div>
+                <div class="name">西伯利亚</div>
                 <div class="count"><svg-icon name="hot-icon" /> 2.5W</div>
               </div>
               <div class="follow-btn">+</div>
@@ -37,9 +37,24 @@
         <!-- 直播间人数列表 -->
         <div class="right">
           <div class="follower">
-            <img src="@/assets/images/host-avatar.png" alt="" class="round" />
-            <img src="@/assets/images/host-avatar.png" alt="" class="round" />
-            <img src="@/assets/images/host-avatar.png" alt="" class="round" />
+            <img
+              src="@/assets/images/avatar1.png"
+              alt=""
+              class="round"
+              @click="isShowUserDetail = true"
+            />
+            <img
+              src="@/assets/images/avatar2.png"
+              alt=""
+              class="round"
+              @click="isShowUserDetail = true"
+            />
+            <img
+              src="@/assets/images/avatar3.png"
+              alt=""
+              class="round"
+              @click="isShowUserDetail = true"
+            />
             <div class="count-number" @click="isShowLiveNumber = true">107</div>
             <svg-icon name="close-icon" size="24" @click="$router.go(-1)" />
           </div>
@@ -100,6 +115,7 @@
     <recharge-protocol-modal v-model="isShowProtocol" @close="isShowProtocol = false" />
     <live-number-modal v-model="isShowLiveNumber" @close="isShowLiveNumber = false" />
     <more-action v-model="isShowMoreAction" @close="isShowMoreAction = false" />
+    <joined-user-detail v-model="isShowUserDetail" :level="10" @close="isShowUserDetail = false" />
   </div>
 </template>
 <script setup>
@@ -113,6 +129,7 @@ import JoinedLiveComp from './components/joined-live'
 import LiveNumberModal from './components/live-number-modal'
 import BarrageComp from './components/barrage'
 import MoreAction from './components/more-action'
+import JoinedUserDetail from './components/joined-user-detail.vue'
 import LoveIcon from '@/assets/images/love.webp'
 import UserAvatar from '@/assets/images/avatar.png'
 import HostAvatar from '@/assets/images/host-avatar.png'
@@ -127,6 +144,7 @@ const isShowGiftModal = ref(false)
 const isShowProtocol = ref(false)
 const isShowLiveNumber = ref(false)
 const isShowMoreAction = ref(false)
+const isShowUserDetail = ref(false)
 const inputText = ref('')
 const list = ref([])
 
@@ -154,32 +172,32 @@ function handleSelectGift(item) {
 
 async function runUserJoinLive() {
   const joinedUsers = [
-    { name: '用户A', level: 30 },
-    { name: '用户B', level: 25 },
-    { name: '用户C', level: 20 },
-    { name: '用户D', level: 15 },
-    { name: '用户E', level: 10 },
-    { name: '用户F', level: 5 },
-    { name: '用户G', level: 1 },
-    { name: '用户H', level: 50 },
-    { name: '用户I', level: 40 },
-    { name: '用户J', level: 35 },
-    { name: '用户K', level: 30 },
-    { name: '用户L', level: 25 },
-    { name: '用户M', level: 20 },
-    { name: '用户N', level: 15 },
-    { name: '用户O', level: 10 },
-    { name: '用户P', level: 5 },
-    { name: '用户Q', level: 1 },
-    { name: '用户R', level: 50 },
-    { name: '用户S', level: 40 },
-    { name: '用户T', level: 35 },
-    { name: '用户U', level: 30 },
-    { name: '用户V', level: 25 },
-    { name: '用户W', level: 20 },
-    { name: '用户X', level: 15 },
-    { name: '用户Y', level: 10 },
-    { name: '用户Z', level: 5 },
+    { name: '币圈刘亦菲', level: 30 },
+    { name: '币圈吴彦祖', level: 25 },
+    { name: '伞菇凉', level: 20 },
+    { name: '币圈大佬', level: 15 },
+    { name: '币圈刘德华', level: 10 },
+    { name: '币圈周星驰', level: 5 },
+    { name: '币圈军师', level: 1 },
+    { name: '比特币专家', level: 50 },
+    { name: 'sol超人', level: 40 },
+    { name: '捞的人', level: 35 },
+    { name: '币圈张学友', level: 30 },
+    { name: '币圈周杰伦', level: 25 },
+    { name: '小芯芯', level: 20 },
+    { name: '币圈小核心', level: 15 },
+    { name: '币圈刘翔', level: 10 },
+    { name: '币圈林丹', level: 5 },
+    { name: 'CNS第一人', level: 1 },
+    { name: 'Coineux', level: 50 },
+    { name: '币圈张智霖', level: 40 },
+    { name: '币圈成龙', level: 35 },
+    { name: '币圈带你飞', level: 30 },
+    // { name: '币圈刘亦菲', level: 25 },
+    // { name: '币圈刘亦菲', level: 20 },
+    // { name: '币圈刘亦菲', level: 15 },
+    // { name: '币圈刘亦菲', level: 10 },
+    // { name: '币圈刘亦菲', level: 5 },
   ]
 
   for (let i = 0; i < joinedUsers.length; i++) {
@@ -191,14 +209,13 @@ async function runUserJoinLive() {
 
 async function runSendComment() {
   const userComments = [
-    '这首歌真好听！',
-    '主播唱得太棒了！',
+    '强子讲的太棒了',
     '大家好，我是新来的！',
     '喜欢这个直播间！',
-    '主播能不能唱一首《小幸运》？',
+    '京东还是很不错的',
     '今天的直播真精彩！',
     '有没有人和我一样喜欢这个主播？',
-    '这首歌让我想起了很多回忆。',
+    '什么时候再来讲一场其他的内容',
     '主播，你的声音真好听！',
     '大家都来支持一下主播吧！',
   ]
